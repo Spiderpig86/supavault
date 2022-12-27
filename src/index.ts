@@ -1,11 +1,7 @@
 export const main = () => {
-  console.log('test');
+  console.log(`test`);
 };
 
-export function backup() {
+export function backup() {}
 
-}
-
-export function restore() {
-    
-}
+export function restore() {}
