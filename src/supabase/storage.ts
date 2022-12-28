@@ -37,7 +37,7 @@ export class Storage {
       .from(bucketName)
       .download(`${path}/${file}.json`);
 
-    if (!error) {
+    if (error) {
       throw new Error(`Error creating bucket ${bucketName}, ${error}`);
     }
 
@@ -62,7 +62,7 @@ export class Storage {
         upsert: false,
       });
 
-    if (!error) {
+    if (error) {
       throw new Error(`Error uploading to bucket ${bucketName}, ${error}`);
     }
 

@@ -13,7 +13,8 @@
   "author": "Stanley Lim",
   "license": "MIT",
   "dependencies": {
-    "@supabase/supabase-js": "^2.2.2"
+    "@supabase/supabase-js": "^2.2.2",
+    "commander": "^9.4.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.1",

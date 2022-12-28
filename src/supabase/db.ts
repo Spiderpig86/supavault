@@ -19,7 +19,7 @@ export class Db {
   public async get(tableName: string): Promise<any> {
     const { data, error } = await this.client.from(tableName).select();
 
-    if (!error) {
+    if (error) {
       throw new Error(`Error getting table ${tableName}, ${error}`);
     }
 
@@ -31,7 +31,7 @@ export class Db {
       .from(tableName)
       .upsert(dataToUpsert);
 
-    if (!error) {
+    if (error) {
       throw new Error(`Error upserting to table ${tableName}, ${error}`);
     }
 
