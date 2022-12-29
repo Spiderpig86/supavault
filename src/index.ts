@@ -20,12 +20,9 @@ export async function backup(
   supaVault: SupaVault,
   bucketName: string,
   tables: string[],
-  useAllTables = false,
 ) {
   supaVault.storage.createBucket(bucketName);
   const dateTime = new Date().toISOString();
-
-  // TODO fetch all tables
 
   for (const table of tables) {
     const data = await supaVault.db.get(table);
@@ -47,7 +44,6 @@ export async function restore(
   bucketName: string,
   folderName: string,
   tables: string[],
-  useAllTables = false,
 ) {
   // TODO fetch all tables
 

@@ -23,12 +23,10 @@ program
     `Comma-separated list of table names`,
     commaSeparatedList,
   )
-  .option(`--all`, `Backup all tables in DB`)
   .action(async (url, sessionKey, bucketName, options) => {
     console.log(url, sessionKey, bucketName, options);
     const client = initializeClient(url, sessionKey);
 
-    // TODO support all flag
     await backup(client, bucketName, options.tables);
   });
 
@@ -43,12 +41,10 @@ program
     `Comma-separated list of table names`,
     commaSeparatedList,
   )
-  .option(`--all`, `Restore all tables in DB`)
   .action(async (url, sessionKey, bucketName, options) => {
     console.log(url, sessionKey, bucketName, options);
     const client = initializeClient(url, sessionKey);
 
-    // TODO support all flag
     await backup(client, bucketName, options.tables);
   });
 
