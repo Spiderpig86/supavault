@@ -4,6 +4,13 @@
   "description": "A simple library to backup your Supabase tables to Supabase storage.",
   "main": "dist/tsc/cli.js",
   "types": "dist/tsc/index.d.ts",
+  "keywords": [
+    "supavault",
+    "supabase",
+    "backup",
+    "database backup",
+    "supabase backup"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
