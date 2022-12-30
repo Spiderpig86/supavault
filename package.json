@@ -2,13 +2,15 @@
   "name": "supavault",
   "version": "0.0.1",
   "description": "A simple library to backup your Supabase tables to Supabase storage.",
-  "main": "index.js",
+  "main": "dist/tsc/index.js",
+  "types": "dist/tsc/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "lint:apply": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --fix",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
   },
   "author": "Stanley Lim",
   "license": "MIT",
