@@ -27,6 +27,7 @@ export async function backup(
 
   for (const table of tables) {
     const data = await supaVault.db.get(table);
+    console.log(`Backing up table ${table}`);
 
     try {
       await supaVault.storage.upload(
@@ -48,9 +49,8 @@ export async function restore(
   folderName: string,
   tables: string[],
 ) {
-  // TODO fetch all tables
-
   for (const table of tables) {
+    console.log(`Restoring table ${table}`);
     const data = await supaVault.storage.download(
       bucketName,
       folderName,

@@ -1,6 +1,6 @@
 {
   "name": "supavault",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple library to backup your Supabase tables to Supabase storage.",
   "main": "dist/tsc/cli.js",
   "types": "dist/tsc/index.d.ts",
@@ -26,6 +26,7 @@
     "commander": "^9.4.1"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "7.32.0",
