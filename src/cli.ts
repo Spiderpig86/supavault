@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { backup, initializeClient } from '.';
+import { backup, initializeClient, restore } from '.';
 
 // Parsing logic
 function commaSeparatedList(value: string, dummy: any) {
@@ -36,16 +36,16 @@ program
   .argument(`<string>`, `Supabase url`)
   .argument(`<string>`, `Session key`)
   .argument(`<string>`, `Bucket name`)
+  .argument(`<string>`, `Folder name`)
   .option(
     `-t, --tables <items>`,
     `Comma-separated list of table names`,
     commaSeparatedList,
   )
-  .action(async (url, sessionKey, bucketName, options) => {
-    console.log(url, sessionKey, bucketName, options);
+  .action(async (url, sessionKey, bucketName, folderName, options) => {
     const client = initializeClient(url, sessionKey);
 
-    await backup(client, bucketName, options.tables);
+    await restore(client, bucketName, folderName, options.tables);
   });
 
 program.parse();
