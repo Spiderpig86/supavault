@@ -20,9 +20,10 @@ export async function backup(
   supaVault: SupaVault,
   bucketName: string,
   tables: string[],
-) {
+): Promise<string> {
   supaVault.storage.createBucket(bucketName);
   const dateTime = new Date().toISOString();
+  const folderName = `backup-${dateTime}`;
 
   for (const table of tables) {
     const data = await supaVault.db.get(table);
@@ -30,13 +31,15 @@ export async function backup(
     try {
       await supaVault.storage.upload(
         bucketName,
-        `backup-${dateTime}/${table}.json`,
+        `${folderName}/${table}.json`,
         data,
       );
     } catch (err) {
       console.error(`Failed to create backup for table ${table}`, err);
     }
   }
+
+  return folderName;
 }
 
 export async function restore(

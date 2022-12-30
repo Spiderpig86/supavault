@@ -1,13 +1,116 @@
 # :lock: supavault
 
-> It was a cold blustery night and the rat was huddled up in his cozy little nest in the corner of the basement. He had been coding for hours, trying to perfect a new TypeScript library for Supabase, a popular database service.
-> 
-> As the wind howled outside, the rat's fingers flew across the keyboard, typing out lines of code with lightning speed. He was completely focused on the task at hand, completely lost in the world of programming.
-> 
-> Despite the late hour, the rat was determined to get his library just right. He knew that if he could get it finished, it would be a huge boon for Supabase users everywhere. They would be able to create even more powerful and efficient databases, all thanks to his hard work.
-> 
-> As the night wore on, the rat's eyes began to droop and his fingers slowed down. But he refused to give up. He knew that if he just kept going, he could finish the library before dawn.
-> 
-> Finally, with a triumphant cry, the rat completed the last line of code. He sat back in his chair, exhausted but proud of what he had achieved.
-> 
-> As the sun began to rise, the rat crawled back into his nest and fell into a deep, restful sleep. He knew that when he woke up, his TypeScript library would be ready to be released to the world. And with any luck, it would be embraced by Supabase users everywhere, making the cold blustery night of coding all worth it in the end.
+Supavault is a simple library + CLI tool to backup and restore your tables on Supabase.
+Data is serialized and deserialized to/from JSON and backup files are created within Supabase Storage.
+
+## ✨ Features
+
+- Backup and restore tables within Supabase.
+- CLI tool to use from your machine.
+- API to write your own backup scripts.
+
+## 🚀 Installation
+
+```
+npm i supavault
+```
+
+## 🖥 CLI
+
+```
+Usage: supavault [options] [command]
+
+CLI to backup and restore Supabase tables
+
+Options:
+  -h, --help                                    display help for command
+
+Commands:
+  backup [options] <string> <string> <string>   Backs up current state of specified tables in Supabase
+  restore [options] <string> <string> <string>  Restores data given table names in Supabase
+  help [command]                                display help for command
+```
+
+### Backup
+
+```
+Usage: supavault backup [options] <string> <string> <string>
+
+Backs up current state of specified tables in Supabase
+
+Arguments:
+  string                Supabase url
+  string                Session key
+  string                Bucket name
+
+Options:
+  -t, --tables <items>  Comma-separated list of table names
+  -h, --help            display help for command
+```
+
+__Example__
+
+```sh
+supavault backup SUPABASE_URL SESSION_KEY ANY_BUCKET_NAME_YOU_WANT --tables Users,Widgets
+```
+
+### Restore
+
+
+```
+Usage: supavault restore [options] <string> <string> <string> <string>
+
+Restores data given table names in Supabase
+
+Arguments:
+  string                Supabase url
+  string                Session key
+  string                Bucket name
+  string                Folder name
+
+Options:
+  -t, --tables <items>  Comma-separated list of table names
+  -h, --help            display help for command
+```
+
+__Example__
+
+```sh
+supavault restore SUPABASE_URL SESSION_KEY ANY_BUCKET_NAME_YOU_WANT --tables Users,Widgets
+```
+
+## 🔥 API
+
+You can integrate the functionality into your project as follows. The parameters here are the same as the ones expected in the CLI:
+
+```ts
+import { backup, initializeClient, restore } from 'supavault';
+
+const client = initializeClient(`https://yourdb.supabase.co`, `your-service-key`);
+
+// Backing up (assuming top level await is supported)
+const folderName = await backup(client, `backup`, [`User`, `Widget`]);
+
+// Restoring
+await restore(client, `backup`, folderName, [`User`, `Widget`])
+```
+
+## 🙋‍♀️ FAQ
+
+__Where do I get the `SUPABASE_URL`?__
+
+This URL can be found in `Settings` > `API` > `Project URL`.
+
+__Where do I get the `SESSION_KEY`?__
+
+This key can be found in `Settings` > `API` > `Project API Keys` > `service_role`.
+
+> ⚠ This key has the ability to bypass Row Level Security. Never share it publicly.
+
+## :newspaper: License and Attribution
+
+Supavault is licensed under the [MIT license](https://github.com/Spiderpig86/supavault/blob/master/LICENSE "MIT License"). If this project has helped you in any way, attribution in your project's README would be much appreciated.
+
+## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
+When opening PRs, please provide adequate information on the bug or feature request. The added detail and formatting will help me understand and resolve your issue faster.

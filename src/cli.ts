@@ -24,7 +24,6 @@ program
     commaSeparatedList,
   )
   .action(async (url, sessionKey, bucketName, options) => {
-    console.log(url, sessionKey, bucketName, options);
     const client = initializeClient(url, sessionKey);
 
     await backup(client, bucketName, options.tables);
