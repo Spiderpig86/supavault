@@ -26,7 +26,7 @@ export async function backup(
   bucketName: string,
   tables: string[],
 ): Promise<string> {
-  supaVault.storage.createBucket(bucketName);
+  await supaVault.storage.createBucket(bucketName);
   const dateTime = new Date().toISOString();
   const folderName = `backup-${dateTime}`;
 
