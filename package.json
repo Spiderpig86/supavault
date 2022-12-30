@@ -1,8 +1,8 @@
 {
   "name": "supavault",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A simple library to backup your Supabase tables to Supabase storage.",
-  "main": "dist/tsc/cli.js",
+  "main": "dist/tsc/index.js",
   "types": "dist/tsc/index.d.ts",
   "keywords": [
     "supavault",

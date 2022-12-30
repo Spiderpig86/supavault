@@ -1,5 +1,10 @@
+import { runCli } from './cli';
 import { Db } from './supabase/db';
 import { Storage } from './supabase/storage';
+
+function isCliCall() {
+  return require.main === module;
+}
 
 export interface SupaVault {
   db: Db;
@@ -63,4 +68,9 @@ export async function restore(
       console.error(`Failed to create backup for table ${table}`, err);
     }
   }
+}
+
+// Trigger CLI if this is triggered as a command, otherwise we only export the funcitons
+if (isCliCall()) {
+  runCli();
 }

@@ -6,7 +6,7 @@ function commaSeparatedList(value: string, dummy: any) {
   return value.split(`,`);
 }
 
-if (isCliCall()) {
+export function runCli() {
   const program = new Command();
 
   program
@@ -49,8 +49,4 @@ if (isCliCall()) {
     });
 
   program.parse();
-}
-
-function isCliCall() {
-  return require.main === module;
 }
