@@ -41,7 +41,7 @@ export async function backup(
         data,
       );
     } catch (err) {
-      console.error(`Failed to create backup for table ${table}`, err);
+      console.error(`Failed to create backup for table ${table}`, JSON.stringify(err));
     }
   }
 
@@ -65,7 +65,7 @@ export async function restore(
     try {
       await supaVault.db.upsert(table, JSON.parse(data));
     } catch (err) {
-      console.error(`Failed to create backup for table ${table}`, err);
+      console.error(`Failed to restore for table ${table}`, JSON.stringify(err));
     }
   }
 }
