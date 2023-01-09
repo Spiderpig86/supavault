@@ -20,7 +20,7 @@ export class Db {
     const { data, error } = await this.client.from(tableName).select();
 
     if (error) {
-      throw new Error(`Error getting table ${tableName}, ${error}`);
+      throw new Error(`Error getting table ${tableName}, ${JSON.stringify(error)}`);
     }
 
     return data;
@@ -32,7 +32,7 @@ export class Db {
       .upsert(dataToUpsert);
 
     if (error) {
-      throw new Error(`Error upserting to table ${tableName}, ${error}`);
+      throw new Error(`Error upserting to table ${tableName}, ${JSON.stringify(error)}`);
     }
 
     return data;

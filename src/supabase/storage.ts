@@ -22,7 +22,7 @@ export class Storage {
     });
 
     if (!error) {
-      throw new Error(`Error creating bucket ${bucketName}, ${error}`);
+      throw new Error(`Error creating bucket ${bucketName}, ${JSON.stringify(error)}`);
     }
 
     return data;
@@ -38,7 +38,7 @@ export class Storage {
       .download(`${path}/${file}.json`);
 
     if (error) {
-      throw new Error(`Error creating bucket ${bucketName}, ${error}`);
+      throw new Error(`Error creating bucket ${bucketName}, ${JSON.stringify(error)}`);
     }
 
     if (!data) {
@@ -63,7 +63,7 @@ export class Storage {
       });
 
     if (error) {
-      throw new Error(`Error uploading to bucket ${bucketName}, ${error}`);
+      throw new Error(`Error uploading to bucket ${bucketName}, ${JSON.stringify(error)}`);
     }
 
     if (!data) {
